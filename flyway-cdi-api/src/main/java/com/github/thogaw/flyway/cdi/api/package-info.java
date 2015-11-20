@@ -13,26 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.thogaw.flyway.cdi.api;
-
-import java.lang.annotation.Documented;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import java.lang.annotation.Target;
-import javax.inject.Qualifier;
-
 /**
- * The qualifier for injecting flyway specific dependencies.
- * 
+ * API-Packge of flyway-cdi library. This package contains all public API
+ * artifacts required by clients to integration flyway into its CDI graph.
+ *
+ * The simplest way to initialize flyway and provide its dependencies, is to
+ * create a producer for your applications {@link java.sql.DataSource} like the
+ * following example:
+ *
+ * <pre>
+ * <code>
+ * &#64;ApplicationScoped
+ * class DataSourceProducer {
+ *     &#64;Resource private DataSource ds;
+ *
+ *     &#64;Produces
+ *     &#64;Flyway
+ *     DataSource produce() {
+ *         return ds;
+ *     }
+ * }
+ * </code>
+ * </pre>
+ *
  * @author thogaw
  */
-@Qualifier
-@Retention(RUNTIME)
-@Target({METHOD, FIELD, PARAMETER, TYPE})
-@Documented
-public @interface Flyway {
-}
+package com.github.thogaw.flyway.cdi.api;
