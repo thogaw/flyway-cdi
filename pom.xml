@@ -42,6 +42,7 @@
     
     <modules>
         <module>flyway-cdi-api</module>
+        <module>flyway-cdi-core</module>
     </modules>
     
     <properties>
@@ -50,6 +51,11 @@
     
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>flyway-cdi-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>javax.enterprise</groupId>
                 <artifactId>cdi-api</artifactId>
