@@ -18,6 +18,48 @@
 
 Flyway-CDI is a support-library that integrates flyway into CDI.
 
+
+## Usage
+
+The simplest way to use this library is to include the api as compile-dependency:
+
+```xml
+<dependency>
+    <groupId>com.github.thogaw.flyway-cdi</groupId>
+    <artifactId>flyway-cdi-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
+And include the core as runtime-dependency:
+
+```xml
+<dependency>
+    <groupId>com.github.thogaw.flyway-cdi</groupId>
+    <artifactId>flyway-cdi-core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <scope>runtime</scope>
+</dependency>
+```
+
+Further you have to implement a producer for your DataSource like this:
+
+```java
+@ApplicationScoped
+public class DataSourceProducer {
+
+    @Resource
+    private DataSource dataSource;
+
+    @Produces
+    @Flyway
+    public DataSource produce() {
+        return dataSource;
+    }
+}
+```
+
+
 ## License
 
 ```
