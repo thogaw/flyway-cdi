@@ -22,33 +22,37 @@ import javax.inject.Inject;
 import org.flywaydb.core.Flyway;
 
 /**
+ * The observer-class for executing flyway migrations. The class observes the
+ * initialization event of CDIs application-scope.
  *
  * @author thogaw
  */
 @ApplicationScoped
 public class FlywayMigrator {
-    
+
     /**
-     * 
+     * The required flyway instance.
      */
     private Flyway flyway;
 
     /**
-     * 
-     * @param event 
+     * The observer-method, reacting on application-scope initialization.
+     *
+     * @param event The CDI event.
      */
-    public void migrationHandler(
+    public void handleMigration(
             @Observes @Initialized(ApplicationScoped.class) Object event) {
         flyway.migrate();
     }
-    
+
     /**
-     * 
-     * @param flyway 
+     * The injection-point of the flyway dependency.
+     *
+     * @param flyway The flyway instance to inject.
      */
     @Inject
     void setFlyway(Flyway flyway) {
         this.flyway = flyway;
     }
-    
+
 }

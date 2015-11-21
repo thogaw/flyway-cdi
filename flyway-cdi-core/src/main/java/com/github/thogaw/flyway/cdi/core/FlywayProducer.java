@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 import org.flywaydb.core.Flyway;
 
 /**
+ * The producer for the applications flyway instance.
  *
  * @author thogaw
  */
@@ -28,9 +29,11 @@ import org.flywaydb.core.Flyway;
 public class FlywayProducer {
 
     /**
-     * 
-     * @param dataSource
-     * @return 
+     * Producer-Method for the applications flyway instance.
+     *
+     * @param dataSource The dependent datasource, required for the flyway
+     * setup.
+     * @return The applications flyway instance.
      */
     @Produces
     public Flyway produceFlyway(

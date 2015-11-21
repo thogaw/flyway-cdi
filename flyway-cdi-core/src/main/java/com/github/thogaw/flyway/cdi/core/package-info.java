@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 /**
+ * The core package of flyway-cdi support library. This package should not be
+ * used by a client but is meant to provide integration of flyway into CDI.
+ *
  * @author thogaw
  */
 package com.github.thogaw.flyway.cdi.core;

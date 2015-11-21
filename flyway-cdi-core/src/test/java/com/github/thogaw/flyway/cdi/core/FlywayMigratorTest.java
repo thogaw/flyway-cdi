@@ -22,22 +22,23 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 /**
- *
+ * Test-Class for {@link FlywayMigrator}.
+ * 
  * @author thogaw
  */
 public final class FlywayMigratorTest {
     
     /**
-     * 
+     * The class under test.
      */
     private FlywayMigrator migrator;
     /**
-     * 
+     * The flyway mock.
      */
     private Flyway flyway;
     
     /**
-     * 
+     * Setting up the class under test.
      */
     @Before
     public void setUp() {
@@ -47,11 +48,11 @@ public final class FlywayMigratorTest {
     }
     
     /**
-     * 
+     * Test-Method for {@link FlywayMigrator#handleMigration(java.lang.Object)}.
      */
     @Test
-    public void testMigrationHandler() {
-        migrator.migrationHandler(null);
+    public void testHandleMigration() {
+        migrator.handleMigration(null);
         
         verify(flyway).migrate();
     }
